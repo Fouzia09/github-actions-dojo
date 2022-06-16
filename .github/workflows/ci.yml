@@ -25,9 +25,16 @@ jobs:
   sast:
     name: Static Code Analysis Tests
     runs-on: ubuntu-latest
-    steps:  
-      - uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
+    needs:
+      - lint-all
+    steps:
+      - uses: actions/checkout@v3
 
-  
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Run static code analysis
+        run: |
+          pip3 install -r requirements.txt
+          bandit app.py
