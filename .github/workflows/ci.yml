@@ -22,11 +22,10 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
 
 
-  lint-all:
+  sast:
     name: Static Code Analysis Tests
     runs-on: ubuntu-latest
-    steps:
-
+    steps:  
       - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
