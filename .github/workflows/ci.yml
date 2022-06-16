@@ -3,6 +3,7 @@ name: CI
 
 on:
   push:
+    workflow_distpatch:
 
 jobs:
   example:
@@ -20,5 +21,14 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
 
+
+  lint-all:
+    name: Static Code Analysis Tests
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
   
